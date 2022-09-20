@@ -1,103 +1,21 @@
-# Getting Started with Create React App with Stricter Linting, Prettier and Tailwind
+# Pizza Ordering React Demo
 
-This 1️⃣ is kind of opinionated. You have been warned. Try it. You might like it.
+It's just a demo of some basic React skills for a quickie build in response to a job posting. It's not meant to be a production app, but it does have some basic tests and a few other niceties.
 
-A `components` directory has been created for you in `src`. Kindly remove `.gitkeep` before using.
+It was created using [my custom Create React App template](https://www.npmjs.com/package/cra-template-eslint-airbnb-tailwind). Try it. You might like it, but be prepared for the strictness of AirBnB's ESLint rules. Oh, and don't use it if you are a [Tailwind](https://tailwindcss.com/) hater (although I'm not sure why you would be, but you might be). On that note, feel free to ask me about my upcoming Tailwind course on [Scrimba](https://scrimba.com/).
 
-This project was originally bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Getting Started
 
-It now includes [Airbnb's ESLint Configuration](https://www.npmjs.com/package/eslint-config-airbnb), [Prettier](https://prettier.io/), and [Tailwind CSS](https://tailwindcss.com/).
+To get started, clone the repo and run `npm install` to install the dependencies. Then run `npm start` to start the development server. The app will be available at `http://localhost:3000`.
 
-The ESLint rules have been slightly customized as per [`package.json`](package.json). [Automatic Class Sorting with Prettier](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) is also taken care of in the [`prettier.config.js`](prettier.config.js) file.
+In order to actually fetch the data, you'll also need to run the server. To do that, run `npm run server` in a separate terminal window. The server will be available at `http://localhost:3001`. It's using [json-server](https://www.npmjs.com/package/json-server) to serve up the data.
 
-## Absolute Imports
+## Running the Tests
 
-This feature is now enabled by default via `jsconfig.json`.
+To run the tests, run `npm test`. This will run the tests in watch mode. You can also run `npm run test:coverage` to run the tests and generate a coverage report.
 
-ESLint usually complains about absolute imports. This is from the rule: `"import/no-unresolved"`. ESLint will not about `jsconfig.json`, so will not recognize our absolute imports, thinking that they are incorrect.
+## Next Steps
 
-To alleviate this, some commonly used directories names are listed under `"import/no-unresolved"`. You can see this by checking the `"rules"` section of `package.json` (under `"eslintConfig"`):
+There are no tests for the API service itself as we are just getting data from a static JSON file. Note that if we were dealing with a full-stack app, we would want to test the API service as well using something like Mock Service Workers (MSW). MSW is a library that allows you to mock out the API service for testing purposes. It's a great tool for testing the API service without having to spin up a full testing server.
 
-```json
- "import/no-unresolved": [
-        2,
-        {
-          "ignore": [
-            "^components",
-            "^services",
-            "^types"
-          ]
-        }
-      ],
-```
-
-So, for any directories, maybe `views` or `pages` or `utils` or `hooks`, you can keep adding to the list as you need. Include the `^` in front of the directory name because that is the regex so that it will ignore any paths that start with that directory name.
-
-## VS Code
-
-### Extensions
-
-Some [recommended extensions](.vscode/extensions.json) are included:
-
-1. Tailwind [IntelliSense for VS Code](https://tailwindcss.com/docs/editor-setup)
-1. Prettier [Code Formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-1. ESLint [ESLint](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-
-## Settings
-
-Check out the [`settings.json`](settings.json) file for more information.
-
-Basically, every time you leave a file (remove focus 🔍) your work is automatically saved. ES Lint and Prettier also kick 🛴 in. For the full application, press 'ctrl/cmd + s'. This will also clean up and organize your imports. Note that this may result in the inadvertent removal of some imports if you imported them but just haven't used them yet. Kindly press 'ctrl/cmd + z' to undo that part as needed.
-
-Also, Emmett is allowed in JSX files.
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-## Learn More
-
-To learn React, check out the [React documentation (beta)](https://beta.reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+In addition, we would avoid tracking the state of external data by using something like [Hyper Fetch](https://hyperfetch.bettertyped.com/) or [Query](https://tanstack.com/query/v4/?from=reactQueryV3&original=https://react-query-v3.tanstack.com/). We would avoid dealing with that as part of our component state.
