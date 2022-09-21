@@ -19,11 +19,11 @@ describe("Toppings", () => {
   test("When the page loads, none of the toppings should be checked", async () => {
     render(<App />);
 
-    // Wait for toppings to load (Anything with "pepper" in the name)
-    await screen.findByRole("checkbox", { name: /pepper/i });
+    // Wait for toppings to load ("Pepperoni")
+    await screen.findByRole("checkbox", { name: /pepperoni/i });
 
     // Get all checkboxes that are checked
-    const checkedToppings = screen.getAllByRole("checkbox", {
+    const checkedToppings = screen.queryAllByRole("checkbox", {
       checked: true,
     });
 

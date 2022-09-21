@@ -1,6 +1,7 @@
 import "./App.css";
 import useEntities from "hooks/useEntities";
 import Pizzas from "layout/Pizzas/Pizzas";
+import Toppings from "layout/Toppings/Toppings";
 
 function App() {
   const pizzas = useEntities("pizzas");
@@ -13,6 +14,7 @@ function App() {
       <main>
         <h2 className="text-center text-2xl font-bold">Order a pizza</h2>
         <Pizzas pizzas={pizzas} />
+        <Toppings toppings={toppings} />
       </main>
     </>
   );
