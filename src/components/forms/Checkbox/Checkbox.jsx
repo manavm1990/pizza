@@ -10,7 +10,7 @@ function Checkbox({ id, label, name, checked }) {
         type="checkbox"
         id={id}
         name={name || label.toLowerCase()}
-        onClick={() => {
+        onChange={() => {
           toggle();
         }}
         checked={isChecked}
