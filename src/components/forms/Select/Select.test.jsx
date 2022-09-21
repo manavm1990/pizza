@@ -65,7 +65,7 @@ describe("Select", () => {
       />
     );
 
-    const select = screen.getByLabelText(label);
+    const select = screen.getByRole("combobox");
     const choice = screen.getByRole("option", { name: choices[1].name });
     await user.selectOptions(select, choice);
 
@@ -87,7 +87,7 @@ describe("Select", () => {
       />
     );
 
-    const select = screen.getByLabelText(label);
+    const select = screen.getByRole("combobox");
     const choice = screen.getByRole("option", { name: choices[1].name });
     await user.selectOptions(select, choice);
 
