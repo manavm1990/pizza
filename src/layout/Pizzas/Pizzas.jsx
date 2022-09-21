@@ -1,20 +1,20 @@
+import Select from "components/forms/Select/Select";
 import PropTypes from "prop-types";
 
 function Pizzas({ pizzas }) {
   return (
-    <select>
-      {pizzas.map((pizza) => (
-        <option key={pizza.id} value={pizza.id}>
-          {pizza.name}
-        </option>
-      ))}
-    </select>
+    <Select
+      choices={pizzas}
+      label="Pizza"
+      id="pizza"
+      labelOption="Choose a pizza"
+    />
   );
 }
 
 Pizzas.propTypes = {
   pizzas: PropTypes.arrayOf(
-    PropTypes.shape({
+    PropTypes.exact({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
       toppingIds: PropTypes.arrayOf(PropTypes.number),
