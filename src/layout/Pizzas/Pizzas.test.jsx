@@ -20,7 +20,7 @@ it("renders a list of pizzas in a dropdown", () => {
     },
   ];
 
-  render(<Pizzas pizzas={double} />);
+  render(<Pizzas pizzas={double} select={() => {}} />);
 
   const dropdown = screen.getByRole("combobox");
 
