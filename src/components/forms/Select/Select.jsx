@@ -18,7 +18,7 @@ function Select({ choices, label, id, labelOption }) {
 
 Select.propTypes = {
   choices: PropTypes.arrayOf(
-    PropTypes.exact({
+    PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
     })
