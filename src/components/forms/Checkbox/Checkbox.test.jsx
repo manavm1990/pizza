@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import Checkbox from "./Checkbox";
 
 const id = "test";
-const label = "Checkbox label";
+const label = "Test";
 const handleClick = () => {};
 
 describe("Checkbox", () => {
