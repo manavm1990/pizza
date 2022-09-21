@@ -1,4 +1,4 @@
-import Select from "components/forms/Select/Select";
+import { Select } from "components/forms";
 import PropTypes from "prop-types";
 
 function Pizzas({ pizzas }) {
@@ -8,6 +8,7 @@ function Pizzas({ pizzas }) {
       label="Pizza"
       id="pizza"
       labelOption="Choose a pizza"
+      handleChange={() => {}}
     />
   );
 }
