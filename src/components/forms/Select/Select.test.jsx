@@ -64,4 +64,23 @@ describe("Select", () => {
 
     expect(select).toHaveValue(choices[1].id.toString());
   });
+
+  it("calls the handleChange function whenever a choice is selected", async () => {
+    const user = userEvent.setup();
+    const handleChange = jest.fn();
+    render(
+      <Select
+        choices={choices}
+        label={label}
+        id={id}
+        handleChange={handleChange}
+      />
+    );
+
+    const select = screen.getByLabelText(label);
+    const choice = screen.getByRole("option", { name: choices[1].name });
+    await user.selectOptions(select, choice);
+
+    expect(handleChange).toHaveBeenCalled();
+  });
 });

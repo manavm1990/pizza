@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 
-function Select({ choices, label, id, labelOption }) {
+function Select({ choices, label, id, labelOption, handleChange }) {
   return (
     <label htmlFor={id}>
       {label}
-      <select id={id}>
+      <select id={id} onChange={handleChange}>
         {labelOption && <option value="">{labelOption}</option>}
         {choices.map((choice) => (
           <option key={choice.id} value={choice.id}>
@@ -26,6 +26,7 @@ Select.propTypes = {
   label: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   labelOption: PropTypes.string,
+  handleChange: PropTypes.func.isRequired,
 };
 
 Select.defaultProps = {
