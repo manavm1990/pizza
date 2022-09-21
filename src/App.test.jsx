@@ -47,8 +47,6 @@ describe("Pizza Toppings", () => {
     });
     const allInOption = await screen.findByRole("option", { name: /all/i });
 
-    const toppingCheckboxes = await screen.findAllByRole("checkbox");
-
     user.selectOptions(pizzaSelect, cheeseOption);
 
     let checked = screen.queryAllByRole("checkbox", { checked: true });
