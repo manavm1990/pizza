@@ -3,18 +3,28 @@ import Checkbox from "./Checkbox";
 
 const id = "test";
 const label = "Test";
-const handleClick = () => {};
 
 describe("Checkbox", () => {
   it("renders the proper label", () => {
-    render(<Checkbox id={id} label={label} handleClick={handleClick} />);
+    render(<Checkbox id={id} label={label} />);
 
     expect(screen.getByLabelText(label)).toBeInTheDocument();
   });
 
+  it("renders checked when checked is true", () => {
+    render(<Checkbox id={id} label={label} checked />);
+
+    expect(screen.getByLabelText(label)).toBeChecked();
+  });
+
+  it("renders unchecked when checked is false", () => {
+    render(<Checkbox id={id} label={label} />);
+
+    expect(screen.getByLabelText(label)).not.toBeChecked();
+  });
+
   it("calls the click handler fxn. when clicked", () => {
-    const mockHandleClick = jest.fn();
-    render(<Checkbox id={id} label={label} handleClick={mockHandleClick} />);
+    render(<Checkbox id={id} label={label} />);
 
     const checkbox = screen.getByLabelText(label);
 
