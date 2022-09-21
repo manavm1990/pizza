@@ -14,3 +14,20 @@ describe("Pizzas", () => {
     expect(selectedOptions[0]).toHaveValue("");
   });
 });
+
+describe("Toppings", () => {
+  test("When the page loads, none of the toppings should be checked", async () => {
+    render(<App />);
+
+    // Wait for toppings to load (Anything with "pepper" in the name)
+    await screen.findByRole("checkbox", { name: /pepper/i });
+
+    // Get all checkboxes that are checked
+    const checkedToppings = screen.getAllByRole("checkbox", {
+      checked: true,
+    });
+
+    // There should be none
+    expect(checkedToppings).toHaveLength(0);
+  });
+});
