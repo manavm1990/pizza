@@ -8,7 +8,7 @@ function Toppings({ toppings }) {
       id={topping.id.toString()}
       label={topping.name}
       name={topping.id.toString()}
-      handleClick={() => {}}
+      checked={topping.active}
     />
   ));
 }
