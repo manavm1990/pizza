@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import Select from "./Select";
 
 let choices;
@@ -49,5 +50,18 @@ describe("Select", () => {
     expect(options).toHaveLength(3);
 
     expect(options[0]).toHaveTextContent(choices[0].name);
+  });
+
+  it("has the correct value whenever a choice is selected", async () => {
+    const user = userEvent.setup();
+    render(<Select choices={choices} label={label} id={id} />);
+
+    const select = screen.getByLabelText(label);
+    const choice = screen.getByRole("option", { name: choices[1].name });
+    await user.selectOptions(select, choice);
+
+    expect(select).toBeInTheDocument();
+
+    expect(select).toHaveValue(choices[1].id.toString());
   });
 });
