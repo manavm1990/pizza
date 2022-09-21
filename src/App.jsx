@@ -1,20 +1,29 @@
-import "./App.css";
-import useEntities from "hooks/useEntities";
+import useMenu from "hooks/useMenu";
 import Pizzas from "layout/Pizzas/Pizzas";
 import Toppings from "layout/Toppings/Toppings";
+import "./App.css";
 
 function App() {
-  const pizzas = useEntities("pizzas");
-  const toppings = useEntities("toppings");
+  const [menu, dispatch] = useMenu();
+
+  const { pizzas, toppings } = menu;
 
   return (
     <>
       <h1 className="text-center text-3xl font-bold">Pizza Time! :)</h1>
 
       <main>
-        <h2 className="text-center text-2xl font-bold">Order a pizza</h2>
-        <Pizzas pizzas={pizzas} />
-        <Toppings toppings={toppings} />
+        {pizzas?.length ? (
+          <Pizzas pizzas={pizzas} select={() => {}} />
+        ) : (
+          <p>Loading Pizzas...</p>
+        )}
+
+        {toppings?.length ? (
+          <Toppings toppings={toppings} />
+        ) : (
+          <p>Loading Toppings...</p>
+        )}
       </main>
     </>
   );
