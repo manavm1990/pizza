@@ -4,6 +4,8 @@ It's just a demo of some basic React skills for a quickie build in response to a
 
 It was created using [my custom Create React App template](https://www.npmjs.com/package/cra-template-eslint-airbnb-tailwind). Try it. You might like it, but be prepared for the strictness of AirBnB's ESLint rules. Oh, and don't use it if you are a [Tailwind](https://tailwindcss.com/) hater (although I'm not sure why you would be, but you might be). On that note, feel free to ask me about my upcoming Tailwind course on [Scrimba](https://scrimba.com/).
 
+The data fetching is done via [ky](https://github.com/sindresorhus/ky). It's a nice little wrapper around [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) that adds some nice features like retries and timeouts. It's also a bit more concise than fetch.
+
 ## Getting Started
 
 To get started, clone the repo and run `npm install` to install the dependencies. Then run `npm start` to start the development server. The app will be available at `http://localhost:3000`.
