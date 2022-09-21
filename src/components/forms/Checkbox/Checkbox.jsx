@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import useChecked from "hooks/useChecked";
 
 function Checkbox({ id, label, name, checked }) {
-  const [isChecked, setIsChecked] = useState(checked);
+  const [isChecked, toggle] = useChecked(checked);
 
   return (
     <label htmlFor={id}>
@@ -11,7 +11,7 @@ function Checkbox({ id, label, name, checked }) {
         id={id}
         name={name || label.toLowerCase()}
         onClick={() => {
-          setIsChecked(!isChecked);
+          toggle();
         }}
         checked={isChecked}
       />
