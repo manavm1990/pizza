@@ -5,7 +5,7 @@ function Checkbox({ id, label, name, checked }) {
   const [isChecked, toggle] = useChecked(checked);
 
   return (
-    <label htmlFor={id}>
+    <div className="flex items-center gap-x-2">
       <input
         type="checkbox"
         id={id}
@@ -14,9 +14,9 @@ function Checkbox({ id, label, name, checked }) {
           toggle();
         }}
         checked={isChecked}
-      />
-      {label}
-    </label>
+      />{" "}
+      <label htmlFor={id}>{label}</label>
+    </div>
   );
 }
 

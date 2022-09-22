@@ -16,9 +16,9 @@ function App() {
 
   return (
     <>
-      <h1 className="text-center text-3xl font-bold">Pizza Time! :)</h1>
+      <h1 className="my-4 text-center text-3xl font-bold">Pizza Time! :)</h1>
 
-      <main>
+      <main className="container mx-auto flex items-center gap-x-4">
         {pizzas?.length ? (
           <Pizzas pizzas={pizzas} select={handlePizzaSelect} />
         ) : (

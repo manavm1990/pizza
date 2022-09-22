@@ -2,8 +2,10 @@ import PropTypes from "prop-types";
 
 function Select({ choices, label, id, labelOption, handleChange }) {
   return (
-    <label htmlFor={id}>
-      {label}
+    <div>
+      <label htmlFor={id} className="sr-only">
+        {label}
+      </label>
       <select id={id} onChange={handleChange}>
         {labelOption && <option value="">{labelOption}</option>}
         {choices.map((choice) => (
@@ -12,7 +14,7 @@ function Select({ choices, label, id, labelOption, handleChange }) {
           </option>
         ))}
       </select>
-    </label>
+    </div>
   );
 }
 
