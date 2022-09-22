@@ -1,4 +1,4 @@
-import useMenu from "hooks/useMenu";
+import useMenu from "hooks/useMenu/useMenu";
 import Pizzas from "layout/Pizzas/Pizzas";
 import Toppings from "layout/Toppings/Toppings";
 import "./App.css";
@@ -8,13 +8,19 @@ function App() {
 
   const { pizzas, toppings } = menu;
 
+  const handlePizzaSelect = (e) => {
+    const pizzaId = e.target.value;
+
+    dispatch({ type: "toggleActiveToppings", payload: { pizzaId } });
+  };
+
   return (
     <>
       <h1 className="text-center text-3xl font-bold">Pizza Time! :)</h1>
 
       <main>
         {pizzas?.length ? (
-          <Pizzas pizzas={pizzas} select={() => {}} />
+          <Pizzas pizzas={pizzas} select={handlePizzaSelect} />
         ) : (
           <p>Loading Pizzas...</p>
         )}
