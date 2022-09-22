@@ -8,7 +8,7 @@ function Toppings({ toppings }) {
       id={topping.id.toString()}
       label={topping.name}
       name={topping.id.toString()}
-      checked={topping.active}
+      checked={topping.isActive}
     />
   ));
 }
@@ -18,6 +18,7 @@ Toppings.propTypes = {
     PropTypes.exact({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
+      isActive: PropTypes.bool,
     })
   ),
 };
