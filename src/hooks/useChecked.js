@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useState } from "react";
 
-function useChecked(isCheckedInitially = false) {
-  const [isChecked, setIsChecked] = useState(isCheckedInitially);
+function useChecked(checked = false) {
+  const [isChecked, setIsChecked] = useState(checked);
 
   useEffect(() => {
-    setIsChecked(isCheckedInitially);
-  }, [isCheckedInitially]);
+    setIsChecked(checked);
+  }, [checked]);
 
-  const toggle = useCallback(() => setIsChecked((checked) => !checked), []);
+  const toggle = useCallback(() => setIsChecked((prev) => !prev), []);
   return [isChecked, toggle];
 }
 
