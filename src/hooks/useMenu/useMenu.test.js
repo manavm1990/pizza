@@ -2,24 +2,37 @@ import { reducer } from "./useMenu";
 
 describe("reducer", () => {
   test("initPizzas", () => {
+    const payload = [{ id: 1, name: "Build Your Own" }];
     const initialState = {};
+
     const action = {
       type: "initPizzas",
-      payload: [{ id: 1, name: "Build Your Own" }],
+      payload,
     };
 
     const newState = reducer(initialState, action);
 
     expect(newState).toEqual({
-      pizzas: [{ id: 1, name: "Build Your Own" }],
+      pizzas: payload,
     });
   });
 
   test("initToppings", () => {
+    const payload = [{ id: 1, name: "Pepperoni" }];
+
     const initialState = {};
     const action = {
       type: "initToppings",
-      payload: [{ id: 1, name: "Pepperoni" }],
+      payload,
+    };
+
+    const newState = reducer(initialState, action);
+
+    expect(newState).toEqual({
+      toppings: payload,
+    });
+  });
+
     };
 
     const newState = reducer(initialState, action);
