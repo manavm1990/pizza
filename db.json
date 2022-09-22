@@ -1,0 +1,70 @@
+{
+  "pizzas": [
+    {
+      "id": 1,
+      "name": "Cheese",
+      "toppingIds": [1]
+    },
+    {
+      "id": 2,
+      "name": "Vegetarian",
+      "toppingIds": [1, 5, 6, 8]
+    },
+    {
+      "id": 3,
+      "name": "Meat Lover",
+      "toppingIds": [2, 3, 4]
+    },
+    {
+      "id": 4,
+      "name": "All In",
+      "toppingIds": [1, 2, 3, 4, 5, 6, 7, 8]
+    },
+    {
+      "id": 5,
+      "name": "Build My Own"
+    }
+  ],
+  "toppings": [
+    {
+      "id": 1,
+      "name": "Extra Cheese"
+    },
+    {
+      "id": 2,
+      "name": "Pepperoni"
+    },
+    {
+      "id": 3,
+      "name": "Sausage"
+    },
+    {
+      "id": 4,
+      "name": "Bacon"
+    },
+    {
+      "id": 5,
+      "name": "Mushrooms"
+    },
+    {
+      "id": 6,
+      "name": "Onions"
+    },
+    {
+      "id": 7,
+      "name": "Green Peppers"
+    },
+    {
+      "id": 8,
+      "name": "Black Olives"
+    },
+    {
+      "id": 9,
+      "name": "Pineapple"
+    },
+    {
+      "id": 10,
+      "name": "Spinach"
+    }
+  ]
+}
