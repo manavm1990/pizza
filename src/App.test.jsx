@@ -78,7 +78,7 @@ describe("Toppings", () => {
 });
 
 describe("Pizza Toppings", () => {
-  test("Whenever any preset pizza is selected ONLY the associated toppings should be checked", async () => {
+  it("activates the correct toppings when toggling between 'Cheese' and 'Meat Lover'", async () => {
     const user = userEvent.setup();
 
     render(<App />);
@@ -86,43 +86,50 @@ describe("Pizza Toppings", () => {
     const pizzaSelect = await screen.findByRole("combobox");
 
     const cheeseOption = await screen.findByRole("option", { name: /cheese/i });
-    const vegetarianOption = await screen.findByRole("option", {
-      name: /vegetarian/i,
+    const meatLoverOption = await screen.findByRole("option", {
+      name: /meat lover/i,
     });
-    const allInOption = await screen.findByRole("option", { name: /all/i });
 
-    user.selectOptions(pizzaSelect, cheeseOption);
+    // "Cheese"
+    const cheeseCheckbox = await screen.findByRole("checkbox", {
+      name: /cheese/i,
+    });
 
-    let checked = screen.queryAllByRole("checkbox", { checked: true });
+    // "Meat Lover"
+    const pepperoniCheckbox = await screen.findByRole("checkbox", {
+      name: /pepperoni/i,
+    });
+    const sausageCheckbox = await screen.findByRole("checkbox", {
+      name: /sausage/i,
+    });
+    const baconCheckbox = await screen.findByRole("checkbox", {
+      name: /bacon/i,
+    });
 
-    // Cheese
-    expect(checked).toHaveLength(1);
-    expect(checked[0]).toHaveValue("1");
+    await user.selectOptions(pizzaSelect, cheeseOption);
 
-    user.selectOptions(pizzaSelect, vegetarianOption);
+    let checkedToppings = screen.queryAllByRole("checkbox", {
+      checked: true,
+    });
 
-    checked = screen.queryAllByRole("checkbox", { checked: true });
+    // "Cheese" should be checked
+    expect(checkedToppings).toHaveLength(1);
+    expect(cheeseCheckbox).toBeChecked();
+    expect(pepperoniCheckbox).not.toBeChecked();
+    expect(sausageCheckbox).not.toBeChecked();
+    expect(baconCheckbox).not.toBeChecked();
 
-    // Vegetarian - 4 toppings
-    expect(checked).toHaveLength(4);
-    expect(checked[0]).toHaveValue("1");
-    expect(checked[1]).toHaveValue("5");
-    expect(checked[2]).toHaveValue("6");
-    expect(checked[3]).toHaveValue("8");
+    await user.selectOptions(pizzaSelect, meatLoverOption);
 
-    user.selectOptions(pizzaSelect, allInOption);
+    checkedToppings = screen.queryAllByRole("checkbox", {
+      checked: true,
+    });
 
-    checked = screen.queryAllByRole("checkbox", { checked: true });
-
-    // All In - 8 toppings
-    expect(checked).toHaveLength(8);
-    expect(checked[0]).toHaveValue("1");
-    expect(checked[1]).toHaveValue("2");
-    expect(checked[2]).toHaveValue("3");
-    expect(checked[3]).toHaveValue("4");
-    expect(checked[4]).toHaveValue("5");
-    expect(checked[5]).toHaveValue("6");
-    expect(checked[6]).toHaveValue("7");
-    expect(checked[7]).toHaveValue("8");
+    // "Meat Lover" should be checked
+    expect(checkedToppings).toHaveLength(3);
+    expect(cheeseCheckbox).not.toBeChecked();
+    expect(pepperoniCheckbox).toBeChecked();
+    expect(sausageCheckbox).toBeChecked();
+    expect(baconCheckbox).toBeChecked();
   });
 });
