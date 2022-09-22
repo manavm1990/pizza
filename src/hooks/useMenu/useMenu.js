@@ -3,7 +3,7 @@ import APIService from "services/api";
 
 const api = new APIService();
 
-const reducer = (state, action) => {
+export const reducer = (state, action) => {
   switch (action.type) {
     case "initPizzas": {
       return { ...state, pizzas: action.payload };
@@ -33,7 +33,6 @@ const reducer = (state, action) => {
 
 function useMenu() {
   const [state, dispatch] = useReducer(reducer, {});
-  console.log(state, "menu");
 
   useEffect(() => {
     api.index("pizzas").then((data) => {
