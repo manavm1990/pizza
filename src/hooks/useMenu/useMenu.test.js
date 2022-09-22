@@ -33,12 +33,36 @@ describe("reducer", () => {
     });
   });
 
+  test("toggleActiveToppings", () => {
+    const pizzas = [
+      {
+        id: 1,
+        name: "Meaty Duo",
+        toppingIds: [1, 2],
+      },
+    ];
+    const initialState = {
+      pizzas,
+      toppings: [
+        { id: 1, name: "Pepperoni" },
+        { id: 2, name: "Sausage" },
+        { id: 3, name: "Canadian Bacon" },
+      ],
+    };
+    const action = {
+      type: "toggleActiveToppings",
+      payload: { pizzaId: 1 },
     };
 
     const newState = reducer(initialState, action);
 
     expect(newState).toEqual({
-      toppings: [{ id: 1, name: "Pepperoni" }],
+      pizzas,
+      toppings: [
+        { id: 1, name: "Pepperoni", isActive: true },
+        { id: 2, name: "Sausage", isActive: true },
+        { id: 3, name: "Canadian Bacon", isActive: false },
+      ],
     });
   });
 });
