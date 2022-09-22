@@ -1,4 +1,4 @@
-# Pizza Ordering React Demo
+# Pizza Toppings Toggler React Demo
 
 It's just a demo of some basic React skills for a quickie build in response to a job posting. It's not meant to be a production app, but it does have some basic tests and a few other niceties.
 
