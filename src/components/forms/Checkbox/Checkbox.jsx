@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
 import useChecked from "hooks/useChecked";
+import PropTypes from "prop-types";
 
 function Checkbox({ id, label, name, checked }) {
   const [isChecked, toggle] = useChecked(checked);
